@@ -12,14 +12,14 @@ defmodule Luke4 do
 		rem(n, 7) == 0 or Enum.any?(Integer.digits(n), fn(x) -> x == 7 end)
 	end
 
-	def get_next_value({current, _, inner}) do
+	def get_next_value({_, current, inner}) do
 		next = current + 1
 		if (contains_or_mod_seven(next)) do
 				if inner == nil do
-					{next, 1, {1,1, nil}}
+					{1, next, {1, 1, nil}}
 				else
-					state = { _, value, _ } = get_next_value(inner)
-					{next, value, state}
+					state = {value, _, _} = get_next_value(inner)
+					{value, next, state}
 				end
 			else
 				{next, next, inner}
@@ -29,9 +29,8 @@ defmodule Luke4 do
 	def generate_sequence() do
 		Stream.unfold({0,0,nil}, fn(acc) ->
 			# IO.inspect(acc)
-			{current,value,inner} = get_next_value(acc)
-			{value, {current,value,inner}}
-
+			state = {value, _, _} = get_next_value(acc)
+			{value, state}
 		end)
 	end
 
@@ -41,5 +40,4 @@ defmodule Luke4 do
 		|> Enum.reverse
 		|> Enum.take(1)
 	end
-
 end
