@@ -12,14 +12,14 @@ defmodule Luke4 do
 		rem(n, 7) == 0 or Enum.any?(Integer.digits(n), fn(x) -> x == 7 end)
 	end
 
-	def get_next_value({current, _value, inner}) do
+	def get_next_value({current, _, inner}) do
 		next = current + 1
 		if (contains_or_mod_seven(next)) do
 				if inner == nil do
 					{next, 1, {1,1, nil}}
 				else
-					newInnerState = { _, innerValue, _ } = get_next_value(inner)
-					{next, innerValue, newInnerState}
+					state = { _, value, _ } = get_next_value(inner)
+					{next, value, state}
 				end
 			else
 				{next, next, inner}
