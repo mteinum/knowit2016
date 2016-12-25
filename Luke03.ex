@@ -56,7 +56,7 @@ defmodule Luke3 do
 
 
 	def parse_file do
-		File.stream!("./Luke3.txt")
+		File.stream!("./Luke03.txt")
 		|> Enum.map(&(String.replace_trailing((&1), "\n", "")))
 		|> Enum.map(
 			fn line -> 
