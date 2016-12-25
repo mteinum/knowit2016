@@ -9,7 +9,7 @@ defmodule Luke7 do
 	def translate({"south", meters}) do { -meters, 0 } end
 
 	def solve do
-		f = File.stream!("./Luke7.txt")
+		f = File.stream!("./Luke07.txt")
 		|> Enum.map(&(String.replace_trailing((&1), "\n", "")))
 		|> Enum.map(
 			fn line -> 
