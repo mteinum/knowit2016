@@ -29,7 +29,7 @@ defmodule Luke5 do
 
 
 	def solve do
-		content = File.read!("./Luke5.txt")
+		content = File.read!("./Luke05.txt")
 		
 		numbers = String.slice(content, 1, String.length(content) - 2)
 		|> String.split(", ")
