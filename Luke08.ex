@@ -60,7 +60,7 @@ defmodule Luke8 do
 	end
 
 	def read_game do
-		File.stream!("./Luke8.txt")
+		File.stream!("./Luke08.txt")
 		|> Enum.map(&(String.replace_trailing((&1), "\n", "")))
 		|> Enum.map(&(String.to_integer((&1))))
 		|> Enum.chunk(1337, 1337, create_list_of(0))
