@@ -6,7 +6,7 @@
 defmodule Luke9 do
 
 	def solve do
-		File.stream!("./Luke9.txt")
+		File.stream!("./Luke09.txt")
 		|> Enum.map(&(String.replace_trailing(&1, "\n", "")))
 		|> Enum.map(&(String.split(&1, ",")))
 		|> Enum.map(fn([from, to, amount]) ->  {from, to, String.to_integer(amount)} end)
