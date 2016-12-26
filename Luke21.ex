@@ -1,4 +1,6 @@
-# Julenissen starter i et av hjørnene av en likesidet trekant og skal velge mellom de to mest nærliggende verdiene på neste rad mens han går mot den andre siden. Hva er den største mulige totale verdien han kan finne langs stien gjennom triangelet, og i hvilket hjørne må han starte for å finne denne?
+# Julenissen starter i et av hjørnene av en likesidet trekant og skal velge mellom de to mest nærliggende verdiene på neste
+# rad mens han går mot den andre siden. Hva er den største mulige totale verdien han kan finne langs stien gjennom triangelet,
+# og i hvilket hjørne må han starte for å finne denne?
 # Svarformat: [hjørne][sum], hvor hjørnene er navngitt [A, B, C], fra toppen med klokka.
 defmodule Luke21 do
 

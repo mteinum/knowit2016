@@ -1,9 +1,12 @@
 # Ormehull
 # Du befinner deg i et rutenett som er 100.000x100.000 stort.
 #
-# Du står i øvre venstre hjørnet av rutenettet, punktet 0,0, og skal til nedre høyre hjørne, punktet 99.999, 99.999. I rutenettet kan du bevege deg opp, ned, til høyre og til venstre. Hver bevegelse tar ett skritt. Hvis f.eks. fra start går ett skritt til høyre havner du på punktet 1,0. Hvis du så går ett skritt ned havner du på punktet 1,1 osv.
+# Du står i øvre venstre hjørnet av rutenettet, punktet 0,0, og skal til nedre høyre hjørne, punktet 99.999, 99.999.
+# I rutenettet kan du bevege deg opp, ned, til høyre og til venstre. Hver bevegelse tar ett skritt. Hvis f.eks. fra start
+# går ett skritt til høyre havner du på punktet 1,0. Hvis du så går ett skritt ned havner du på punktet 1,1 osv.
 #
-# På rutenettet finnes det 11 ormehull som kan transportere deg fra ett punkt til et annet. Ormehullene fungerer begge veier, fra x til y og fra y til x og koster ingen skritt å bruke. 
+# På rutenettet finnes det 11 ormehull som kan transportere deg fra ett punkt til et annet. Ormehullene fungerer begge
+# veier, fra x til y og fra y til x og koster ingen skritt å bruke. 
 # Ditt mål er å finne veien med kortest antall skritt til mål.
 #
 # Eks:
@@ -11,7 +14,8 @@
 # 1,2-5,3
 # 3,4-7,8
 #
-# Ville antall skritt fra 0,0 til 9,9 være 9. F.eks. via. veien høyre, ned, ned, (ormehull fra 1,2 til 5,3), venstre, venstre, ned, (ormehull fra 3,4 til 7,8), ned, høyre, høyre.
+# Ville antall skritt fra 0,0 til 9,9 være 9. F.eks. via. veien høyre, ned, ned, (ormehull fra 1,2 til 5,3), venstre,
+# venstre, ned, (ormehull fra 3,4 til 7,8), ned, høyre, høyre.
 
 defmodule Luke17 do
 
@@ -47,6 +51,7 @@ defmodule Luke17 do
 		#
 		# totalt: 42181 + 27478
 		#
+		# NB! Denne ble løst på papir da det kun var en åpenbar løsning.
 
 	end
 

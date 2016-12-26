@@ -1,4 +1,5 @@
-# I regnearkprogrammer er ofte kolonner angitt ved strenger bestående av bokstavene A til Z. Kolonnenummer 1 er angitt med bokstaven A, 2 er B osv. Flere, og mer komplekse eksempler:
+# I regnearkprogrammer er ofte kolonner angitt ved strenger bestående av bokstavene A til Z. Kolonnenummer 1 er angitt med
+# bokstaven A, 2 er B osv. Flere, og mer komplekse eksempler:
 # 1 -> A
 # 2 -> B
 # 3 -> C
@@ -11,8 +12,8 @@
 # 53 -> BA
 # ...
 # 79 -> CA
-
-Hva blir kolonnetittelen på kolonne nummer 90101894?
+#
+#Hva blir kolonnetittelen på kolonne nummer 90101894?
 
 defmodule Luke24 do
 

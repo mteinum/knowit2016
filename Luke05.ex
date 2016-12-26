@@ -1,5 +1,8 @@
-# Kongen av Indonesia har som tradisjon å sende sine julehilsener kryptert til sine venner. I år skjedde det en glipp og kongen sendte meldingen til alle i hele verden med en email adresse, vi har også fått meldingen og trenger hjelp til å dekryptere den. Med meldingen fulgte også følgende instruksjoner på hvordan den kan dekrypteres:
-# For å dekryptere meldingen må man først legge sammen parene i listen, ett par er første og siste element, andre og nest siste element og så videre. Når du har alle verdiene kan du oversette disse til bokstaver, hvor a = 1 og z = 26.
+# Kongen av Indonesia har som tradisjon å sende sine julehilsener kryptert til sine venner. I år skjedde det en glipp og
+# kongen sendte meldingen til alle i hele verden med en email adresse, vi har også fått meldingen og trenger hjelp til å
+# dekryptere den. Med meldingen fulgte også følgende instruksjoner på hvordan den kan dekrypteres:
+# For å dekryptere meldingen må man først legge sammen parene i listen, ett par er første og siste element, andre og nest
+# siste element og så videre. Når du har alle verdiene kan du oversette disse til bokstaver, hvor a = 1 og z = 26.
 
 defmodule Luke5 do
 
