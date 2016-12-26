@@ -15,12 +15,12 @@
 # Du skal ta tallet 1111321112321111 som input og kjøre det 50 ganger! Hva er lengden (antall siffer) på det nye tallet?
 
 defmodule Luke15 do
-	def look_and_say(s) do
-		{_, _, result} = Enum.reduce(s ++ [0], { 0, 0, [] }, fn(ch, _acc = { current, count, prev }) ->
-			cond do
-				ch == current -> { current, count + 1, prev }
-				current == 0 -> { ch, 1, prev }
-				true -> { ch, 1, [current] ++ [?0 + count] ++ prev }
+	def look_and_say([head|tail]) do
+		{_, _, result} = Enum.reduce(tail ++ [0], { head, 1, [] }, fn(ch, _acc = { current, count, prev }) ->
+			if ch == current do
+				{ current, count + 1, prev }
+			else
+				{ ch, 1, [current] ++ [?0 + count] ++ prev }
 			end
 		end)
 
