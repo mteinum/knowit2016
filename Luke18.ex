@@ -1,5 +1,9 @@
-# Du befinner deg i et rom der den eneste lyskilden er en gammel digital vekkerklokke (det er ingenting annet som gir lys i rommet enn denne). Sifrene på vekkerklokka er LEDs organisert i et såkalt 7-segments display. Klokkevisningen er på formatet hh:mm:ss, og er konfigurert opp til å vise klokkeslettet i 24 timersformat. Det første sifferet i timevisningen er blankt om tallet på timeplassen er mindre enn 10.
-# Anta at alle LEDene bidrar like mye til lysstyrken i rommet. Hvor lang tid går det fra rommet er på sitt mørkeste til det er på sitt lyseste? Svaret oppgis på formatet hh:mm:ss.
+# Du befinner deg i et rom der den eneste lyskilden er en gammel digital vekkerklokke (det er ingenting annet som gir lys
+# i rommet enn denne). Sifrene på vekkerklokka er LEDs organisert i et såkalt 7-segments display. Klokkevisningen er på
+# formatet hh:mm:ss, og er konfigurert opp til å vise klokkeslettet i 24 timersformat. Det første sifferet i timevisningen
+# er blankt om tallet på timeplassen er mindre enn 10.
+# Anta at alle LEDene bidrar like mye til lysstyrken i rommet. Hvor lang tid går det fra rommet er på sitt mørkeste til
+# det er på sitt lyseste? Svaret oppgis på formatet hh:mm:ss.
 # Eksempel: Tar dette 3 timer og 15 minutter og 3 sekunder blir svaret 03:15:03
 
 defmodule Luke18 do
