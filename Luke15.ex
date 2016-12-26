@@ -11,7 +11,21 @@
 # Du skal ta tallet 1111321112321111 som input og kjøre det 50 ganger! Hva er lengden (antall siffer) på det nye tallet?
 
 defmodule Luke15 do
+	def look_and_say(s) do
+		{_, _, result} = Enum.reduce(s ++ [0], { 0, 0, [] }, fn(ch, _acc = { current, count, prev }) ->
+			cond do
+				ch == current -> { current, count + 1, prev }
+				current == 0 -> { ch, 1, prev }
+				true -> { ch, 1, [current] ++ [?0 + count] ++ prev }
+			end
+		end)
+
+		result |> Enum.reverse
+	end
+
 	def solve do
-		10965480
+		1..50
+		|> Enum.reduce('1111321112321111', fn(_, acc)-> look_and_say(acc) end)
+		|> length
 	end
 end
