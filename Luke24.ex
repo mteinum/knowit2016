@@ -12,8 +12,8 @@
 # 53 -> BA
 # ...
 # 79 -> CA
-
-Hva blir kolonnetittelen på kolonne nummer 90101894?
+#
+#Hva blir kolonnetittelen på kolonne nummer 90101894?
 
 defmodule Luke24 do
 
