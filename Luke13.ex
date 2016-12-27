@@ -32,7 +32,56 @@
 # Input: http://pastebin.com/raw/aTeSBwR4
 
 defmodule Luke13 do
+	@width 10000
+
 	def solve do
-		6866581
+		bitmap = :hipe_bifs.bitarray(@width * @width, false)
+
+		read_file
+		|> Enum.filter(&(valid_line(&1)))
+		|> Enum.each(&(process_line(bitmap, &1)))
+
+		0 .. bit_size(bitmap) - 1
+		|> Enum.reduce(0, &(count(:hipe_bifs.bitarray_sub(bitmap, &1), &2)))	
+	end
+
+	def update(bitmap, index, value) when is_boolean(value) do
+		:hipe_bifs.bitarray_update(bitmap, index, value)
+	end
+
+	def update(bitmap, index, :toggle) do
+		update(bitmap, index, !:hipe_bifs.bitarray_sub(bitmap, index))
+	end
+
+	def valid_line({{from_x, from_y}, {to_x, to_y}, _}) do
+		to_x > from_x and to_y > from_y
+	end
+
+	def process_line(bitmap, {{from_x, from_y}, {to_x, to_y}, op}) do
+		from_x .. to_x 
+			|> Enum.each(fn(x)->
+				from_y .. to_y 
+				|> Enum.each(fn(y)->
+					update(bitmap, x + y * @width, op)
+				end)
+			end)
+	end
+
+	def count(bit, acc) when bit, do: acc + 1
+	def count(_, acc), do: acc
+
+	def position([x, y]) do { String.to_integer(x), String.to_integer(y) } end
+	def position(s) do position(String.split(s, ",")) end
+
+	def operation("on"), do: true
+	def operation("off"), do: false
+
+	def parse_line(["turn", op, from, "through", to]) do {position(from), position(to), operation(op)} end
+	def parse_line(["toggle", from, "through", to]) do {position(from), position(to), :toggle} end
+
+	def read_file do
+		File.stream!("./Luke13.txt")
+		|> Enum.map(&(String.replace_trailing((&1), "\n", "")))
+		|> Enum.map(fn(line)-> parse_line(String.split(line, " ")) end)
 	end
 end
