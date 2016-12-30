@@ -35,14 +35,30 @@ defmodule Luke13 do
 	@width 10000
 
 	def solve do
-		bitmap = :hipe_bifs.bitarray(@width * @width, false)
+		commands = read_file
 
-		read_file
-		|> Enum.filter(&(valid_line(&1)))
-		|> Enum.each(&(process_line(bitmap, &1)))
+		0 .. @width
+		|> Enum.reduce(0, &(process_line(&1, commands) + &2))
+	end
+
+	def process_line(line_number, commands) do
+
+		bitmap = :hipe_bifs.bitarray(@width, false)
+
+		commands
+		|> Enum.filter(&(command_valid_for_line(&1, line_number)))
+		|> Enum.map(&(apply_command(&1, bitmap)))
 
 		0 .. bit_size(bitmap) - 1
-		|> Enum.reduce(0, &(count(:hipe_bifs.bitarray_sub(bitmap, &1), &2)))	
+		|> Enum.reduce(0, &(count(:hipe_bifs.bitarray_sub(bitmap, &1), &2)))
+	end
+
+	def command_valid_for_line({{_, from_y}, {_, to_y}, _}, line_number) do
+		line_number >= from_y and line_number <= to_y
+	end
+
+	def apply_command({{from_x, _}, {to_x, _}, op}, bitmap) do
+		from_x .. to_x |> Enum.each(&(update(bitmap, &1, op)))
 	end
 
 	def update(bitmap, index, value) when is_boolean(value) do
@@ -53,24 +69,10 @@ defmodule Luke13 do
 		update(bitmap, index, !:hipe_bifs.bitarray_sub(bitmap, index))
 	end
 
-	def valid_line({{from_x, from_y}, {to_x, to_y}, _}) do
-		to_x > from_x and to_y > from_y
-	end
-
-	def process_line(bitmap, {{from_x, from_y}, {to_x, to_y}, op}) do
-		from_x .. to_x 
-			|> Enum.each(fn(x)->
-				from_y .. to_y 
-				|> Enum.each(fn(y)->
-					update(bitmap, x + y * @width, op)
-				end)
-			end)
-	end
-
 	def count(bit, acc) when bit, do: acc + 1
 	def count(_, acc), do: acc
 
-	def position([x, y]) do { String.to_integer(x), String.to_integer(y) } end
+	def position([x, y]) do {String.to_integer(x), String.to_integer(y)} end
 	def position(s) do position(String.split(s, ",")) end
 
 	def operation("on"), do: true
@@ -79,9 +81,14 @@ defmodule Luke13 do
 	def parse_line(["turn", op, from, "through", to]) do {position(from), position(to), operation(op)} end
 	def parse_line(["toggle", from, "through", to]) do {position(from), position(to), :toggle} end
 
+	def valid_line({{from_x, from_y}, {to_x, to_y}, _}) do
+		to_x > from_x and to_y > from_y
+	end
+
 	def read_file do
 		File.stream!("./Luke13.txt")
 		|> Enum.map(&(String.replace_trailing((&1), "\n", "")))
-		|> Enum.map(fn(line)-> parse_line(String.split(line, " ")) end)
+		|> Enum.map(&(parse_line(String.split(&1, " "))))
+		|> Enum.filter(&(valid_line(&1)))
 	end
 end
